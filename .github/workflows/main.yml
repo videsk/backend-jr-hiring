@@ -21,7 +21,7 @@ jobs:
         run: npm ci
 
       - name: Running test
-        run: npm run test:${{secrets.VIDESK_HIRING_TEST}} # Choose as env variable the test you want to send like mandatory or all including bonus
+        run: npm run test:${{secrets.VIDESK_HIRING_TEST || 'mandatory'}} # Choose as env variable the test you want to send like mandatory or all including bonus, default mandatory
 
   send-test:
     runs-on: ubuntu-latest
