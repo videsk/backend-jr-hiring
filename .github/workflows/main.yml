@@ -1,0 +1,41 @@
+name: Automated test
+
+on:
+  push:
+    branches: [ main, staging ]
+  pull_request:
+    branches: [ main, staging, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Running test
+        run: npm run test:${{secrets.VIDESK_HIRING_TEST}} # Choose as env variable the test you want to send like mandatory or all including bonus
+
+  send-test:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs: [test] # Will require to pass the tests, if fails will not send to us
+
+    steps:
+      - name: Send to Videsk
+        uses: indiesdev/curl@v1
+        with:
+          url: ${{secrets.VIDESK_HIRING_API}}
+          method: 'POST'
+          headers: '{ "Content-Type": "application/json" }'
+          bearer-token: ${{secrets.VIDESK_DEV_TOKEN}}
+          body: '{ "repository": "${{github.repository}}", "sha": "${{github.sha}}" }'
+          is_debug: false
+          timeout: 10000

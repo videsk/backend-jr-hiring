@@ -1,0 +1,26 @@
+{
+  "name": "@videsk/backend-jr-hiring",
+  "version": "1.0.0",
+  "description": "Videsk hiring process for backend developer",
+  "main": "index.js",
+  "scripts": {
+    "test:1": "mocha ./test/test1.test.js",
+    "test:2": "mocha ./test/test2.test.js",
+    "test:3": "mocha ./test/test3.test.js",
+    "test:mandatory": "mocha ./test/test1.test.js ./test/test2.test.js",
+    "test:all": "mocha"
+  },
+  "keywords": [
+    "videsk",
+    "hiring",
+    "backend"
+  ],
+  "author": "videsk",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "faker": "^5.5.3",
+    "mocha": "^9.1.3",
+    "sift": "^15.0.0"
+  }
+}
