@@ -43,7 +43,7 @@ Read the following steps to send a correct test.
 This test needs latest Node LTS installed on your machine.
 ```
 
-1. Add secrets we sent you to this repository exactly as we write you.
+1. Add secrets `VIDESK_HIRING_API` and `VIDESK_DEV_TOKEN` we sent you to this repository exactly as we write you.
 2. Create branches `main`, `staging` and `develop`.
 3. Add protection to the `main` branch with `Require status checks to pass before merging` in repository settings. In case of `status checks` set the action `test`.
 
@@ -64,6 +64,8 @@ You can test locally with `mocha`. To run test can write in terminal:
 - Test 3: `npm run test:3`
 - Test only mandatory: `npm run test:mandatory`
 - Test all: `npm run test:all` (including bonus)
+
+You can choose the test you want to send us adding to repository secrets `VIDESK_HIRING_TEST` as `mandatory` or `all`. **By default, is `mandatory`.**
 
 **We suggest you use debug of your IDE or code editor.**
 
@@ -93,7 +95,7 @@ Your job is:
 - [ ] When the result of querying to database is empty array throw an `NotFound` error.
 - [ ] When the result of querying to database is an unexpected error throw an `ServerError` error.
 
-Be sure the errors were not crash the app, does mean if you don't catch the error correctly the server will be stopped. We catch correctly in the test, but in the real world, that's equal to server down!
+Be sure the errors were not crash the app, does mean **if you don't catch the error correctly the server will be stopped**. We catch correctly in the test, but **in the real world, that's equal to server down!**
 
 ---
 
