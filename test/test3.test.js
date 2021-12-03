@@ -43,7 +43,7 @@ describe('Test 3', function () {
 
     it('Update org', async () => {
         const name = 'Videsk';
-        const { id } = db.users[2];
+        const { id } = db.orgs[2];
         const result = await server.updateOne('orgs', id, { name });
         expect(!Array.isArray(result) && typeof result === 'object').to.be.equal(true);
         expect(result.id).to.be.equal(id);
